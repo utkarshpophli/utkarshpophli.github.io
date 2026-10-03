@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/gsap.min.js"></script>
+    <script src="assets/rms.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #070b14; }
+      :root {
+        --blue: #4a90e2; --blue2: #68aeff; --green: #51cf66; --ink: #f8f9fa; --dark: #2c3e50;
+        --ui: "Segoe UI", system-ui, sans-serif; --mono: Consolas, "Cascadia Mono", monospace;
+      }
+      #root {
+        position: relative; width: 1920px; height: 1080px; overflow: hidden; font-family: var(--ui); color: var(--ink);
+        background: radial-gradient(1100px 760px at 50% 38%, #0f1d38 0%, #0a1226 45%, #070b14 100%);
+      }
+      .scene { position: absolute; inset: 0; }
+      .abs { position: absolute; }
+
+      /* Orb: container is positioned by GSAP, halo and core breathe with the music. */
+      #orb { position: absolute; left: 0; top: 0; width: 760px; height: 760px; z-index: 5; }
+      #orb .halo { position: absolute; left: 0; top: 0; width: 760px; height: 760px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(74,144,226,.55) 0%, rgba(74,144,226,.2) 38%, rgba(74,144,226,0) 70%); }
+      #orb .core { position: absolute; left: 250px; top: 250px; width: 260px; height: 260px; border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, #dcedff 0%, #68aeff 22%, #4a90e2 55%, #1b4f9c 100%);
+        box-shadow: 0 0 90px 24px rgba(74,144,226,.5), inset -22px -34px 64px rgba(6,18,46,.65); }
+
+      /* Scene 1 */
+      #bar { left: 360px; top: 770px; width: 1200px; height: 96px; border-radius: 32px; background: #f8f9fa;
+        border: 2px solid rgba(74,144,226,.65); box-shadow: 0 24px 90px rgba(0,0,0,.55), 0 0 46px rgba(74,144,226,.28);
+        display: flex; align-items: center; padding-left: 40px; font-size: 31px; color: var(--dark); white-space: nowrap; }
+      #caret { display: inline-block; width: 3px; height: 38px; margin-left: 3px; background: var(--blue); }
+
+      /* Scene 2 */
+      #wm { left: 0; width: 1920px; top: 340px; text-align: center; font-size: 230px; font-weight: 600; letter-spacing: .16em;
+        padding-left: .16em; line-height: 1; color: #f8f9fa; text-shadow: 0 0 60px rgba(74,144,226,.75), 0 0 140px rgba(74,144,226,.35); }
+      #sub { left: 0; width: 1920px; top: 640px; text-align: center; font-size: 30px; letter-spacing: .26em; text-transform: uppercase; color: var(--blue2); }
+      #line { left: 0; width: 1920px; top: 730px; text-align: center; font-size: 46px; color: #dce6f5; }
+
+      /* Scene 3 */
+      .pill { top: 108px; height: 84px; padding: 0 44px; border-radius: 999px; border: 2px solid rgba(104,174,255,.28);
+        background: rgba(11,20,38,.8); display: flex; align-items: center; font-size: 36px; font-weight: 600; color: #8da2c0; }
+      .arrow { top: 150px; width: 80px; height: 3px; background: rgba(104,174,255,.35); transform-origin: left center; }
+      #shot { left: 160px; top: 290px; width: 800px; height: 640px; border-radius: 26px; border: 2px solid rgba(104,174,255,.3);
+        background: linear-gradient(160deg, #0f1c36, #0a1327); overflow: hidden; }
+      #shot svg { position: absolute; left: 40px; top: 50px; }
+      #scan { top: 0; left: 0; width: 6px; height: 640px; background: linear-gradient(180deg, rgba(104,174,255,0), #68aeff, rgba(104,174,255,0));
+        box-shadow: 0 0 40px 10px rgba(104,174,255,.55); }
+      .br { width: 54px; height: 54px; border: 5px solid var(--blue2); }
+      #tag { right: 26px; top: 22px; padding: 8px 18px; border-radius: 999px; background: rgba(74,144,226,.2); color: var(--blue2); font-size: 22px; font-family: var(--mono); }
+      #checks { left: 1020px; top: 290px; width: 740px; }
+      .row { height: 118px; display: flex; align-items: center; gap: 26px; font-size: 35px; line-height: 1.2; color: #eef3fb; }
+      .tick { flex: none; width: 56px; height: 56px; border-radius: 50%; background: rgba(81,207,102,.16); border: 2px solid var(--green);
+        position: relative; }
+      .tick::after { content: ""; position: absolute; left: 19px; top: 8px; width: 13px; height: 26px; border-right: 5px solid var(--green);
+        border-bottom: 5px solid var(--green); transform: rotate(45deg); }
+      #file { left: 1020px; top: 800px; height: 100px; padding: 0 36px; border-radius: 22px; background: #f8f9fa; color: var(--dark);
+        display: flex; align-items: center; gap: 22px; font-family: var(--mono); font-size: 38px; box-shadow: 0 0 50px rgba(74,144,226,.35); }
+      #file i { width: 34px; height: 44px; border-radius: 6px; border: 3px solid var(--blue); position: relative; }
+      #file b { font-family: var(--ui); font-size: 26px; font-weight: 600; color: #2f9e44; margin-left: 10px; }
+
+      /* Scene 4 */
+      #count { left: 150px; top: 230px; font-size: 430px; font-weight: 700; line-height: 1; letter-spacing: -.03em; color: #f8f9fa;
+        text-shadow: 0 0 80px rgba(74,144,226,.5); }
+      #unit { left: 170px; top: 790px; font-size: 76px; font-weight: 600; color: var(--blue2); }
+      #cap { left: 170px; top: 905px; width: 700px; font-size: 38px; line-height: 1.3; color: #b7c6dd; }
+      .chip { width: 380px; height: 152px; border-radius: 24px; background: rgba(15,28,54,.9); border: 2px solid rgba(104,174,255,.3);
+        padding: 22px 28px; display: flex; flex-direction: column; justify-content: space-between; }
+      .chip span { font-size: 30px; color: #cfe0f7; }
+      .chip em { font-style: normal; font-size: 62px; font-weight: 700; color: var(--blue2); line-height: 1; }
+
+      /* Scene 5 */
+      #vf { left: 0; width: 1920px; top: 590px; text-align: center; font-size: 96px; font-weight: 600; letter-spacing: -.02em; }
+      #vf span { display: inline-block; margin: 0 .18em; }
+      #models { left: 0; width: 1920px; top: 750px; display: flex; justify-content: center; gap: 22px; }
+      .model { padding: 16px 34px; border-radius: 999px; border: 2px solid rgba(104,174,255,.4); background: rgba(15,28,54,.85);
+        font-size: 34px; color: #dce9fb; }
+      #url { left: 0; width: 1920px; top: 900px; text-align: center; font-family: var(--mono); font-size: 40px; color: var(--blue2); }
+      #fade { position: absolute; inset: 0; background: #000; z-index: 20; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="21.28" data-width="1920" data-height="1080">
+
+      <div id="orb" class="clip" data-start="0" data-duration="21.28"><div class="halo"></div><div class="core"></div></div>
+
+      <!-- Scene 1: hook (0 - 4.39) -->
+      <section id="s1" class="scene clip" data-start="0" data-duration="4.7">
+        <div id="bar" class="abs"><span id="typed"></span><span id="caret"></span></div>
+      </section>
+
+      <!-- Scene 2: reveal (4.39 - 8.74) -->
+      <section id="s2" class="scene clip" data-start="4.39" data-duration="4.65">
+        <h1 id="wm" class="abs">GLOW</h1>
+        <p id="sub" class="abs">General Local Offline Windows-agent</p>
+        <p id="line" class="abs">It can see, understand, and control your Windows PC.</p>
+      </section>
+
+      <!-- Scene 3: the flow (8.74 - 13.11) -->
+      <section id="s3" class="scene clip" data-start="8.74" data-duration="4.67">
+        <div id="p1" class="pill abs" style="left:430px">Planner</div>
+        <div id="a1" class="arrow abs" style="left:620px"></div>
+        <div id="p2" class="pill abs" style="left:720px">Executor</div>
+        <div id="a2" class="arrow abs" style="left:925px"></div>
+        <div id="p3" class="pill abs" style="left:1025px">Verifier</div>
+        <div id="shot" class="abs">
+          <svg width="720" height="540" viewBox="0 0 720 540" fill="none">
+            <path d="M0 520H720M0 520V0" stroke="rgba(160,190,230,.35)" stroke-width="2"/>
+            <g fill="rgba(74,144,226,.5)">
+              <rect x="30" y="360" width="62" height="160"/><rect x="130" y="300" width="62" height="220"/><rect x="230" y="330" width="62" height="190"/>
+              <rect x="330" y="240" width="62" height="280"/><rect x="430" y="270" width="62" height="250"/><rect x="530" y="160" width="62" height="360"/><rect x="630" y="120" width="62" height="400"/>
+            </g>
+            <polyline points="60,320 160,250 260,290 360,190 460,215 560,110 660,70" stroke="#68aeff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          <div id="scan" class="abs"></div>
+          <div class="br abs" style="left:24px;top:24px;border-right:0;border-bottom:0"></div>
+          <div class="br abs" style="right:24px;bottom:24px;border-left:0;border-top:0"></div>
+          <div id="tag" class="abs">Gemini Vision</div>
+        </div>
+        <div id="checks" class="abs">
+          <div class="row"><span class="tick"></span><span>Takes screenshot with Gemini Vision</span></div>
+          <div class="row"><span class="tick"></span><span>Analyzes chart data and trends</span></div>
+          <div class="row"><span class="tick"></span><span>Summarizes key findings with AI</span></div>
+          <div class="row"><span class="tick"></span><span>Creates file with actual analysis (not placeholders!)</span></div>
+        </div>
+        <div id="file" class="abs"><i></i>report.txt<b>created</b></div>
+      </section>
+
+      <!-- Scene 4: 92 tools (13.11 - 17.47) -->
+      <section id="s4" class="scene clip" data-start="13.11" data-duration="4.7">
+        <div id="count" class="abs">0</div>
+        <div id="unit" class="abs">tools</div>
+        <div id="cap" class="abs">Comprehensive Windows automation</div>
+        <div id="chips"></div>
+      </section>
+
+      <!-- Scene 5: outro (17.47 - 21.28) -->
+      <section id="s5" class="scene clip" data-start="17.47" data-duration="3.81">
+        <div id="vf" class="abs"><span>Vision-first.</span><span>Fully autonomous.</span></div>
+        <div id="models" class="abs">
+          <div class="model">Groq</div><div class="model">Gemini Vision</div><div class="model">Claude</div><div class="model">OpenAI</div><div class="model">Ollama</div>
+        </div>
+        <div id="url" class="abs">github.com/utkarshpophli/GLOW</div>
+      </section>
+
+      <div id="fade"></div>
+
+      <audio id="music" data-start="0" data-duration="21.28" data-track-index="10" data-volume="0.3" data-fade-in="0.8" data-fade-out="1.4" src="assets/music/happy-beats-business-moves-vol-12-by-ende-dot-app.mp3"></audio>
+      <audio id="sfx" data-start="0" data-duration="21.28" data-track-index="11" data-volume="1" src="assets/sfx-mix.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+      const E = { out: "power3.out", io: "power3.inOut" };
+
+      // ---- Orb: placement per scene, breathing + subtle music-reactive glow ----
+      gsap.set("#orb", { xPercent: -50, yPercent: -50, x: 960, y: 420, scale: 1 });
+      tl.to("#orb", { y: 250, scale: 0.55, duration: 0.8, ease: E.io }, 4.1);
+      tl.to("#orb", { x: 150, y: 150, scale: 0.3, duration: 0.7, ease: E.io }, 8.5);
+      tl.to("#orb", { x: 960, y: 400, scale: 1.05, duration: 0.9, ease: E.io }, 17.3);
+      const clock = { t: 0 };
+      tl.to(clock, {
+        t: 21.28, duration: 21.28, ease: "none",
+        onUpdate: () => {
+          const t = clock.t;
+          const r = (window.RMS && window.RMS[Math.min(window.RMS.length - 1, Math.floor(t * 30))]) || 0;
+          const breath = 1 + 0.035 * Math.sin(t * 2.2);
+          $("#orb .core").style.transform = "scale(" + (breath * (1 + r * 0.04)).toFixed(4) + ")";
+          $("#orb .halo").style.opacity = (0.72 + r * 0.28).toFixed(3);
+        },
+      }, 0);
+
+      // ---- Scene 1: hook ----
+      const PROMPT = "Look at my screen, analyze this chart, and save a summary to report.txt";
+      const typing = { n: 0 };
+      tl.fromTo("#bar", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: E.out }, 0.85);
+      tl.to(typing, { n: PROMPT.length, duration: 2.3, ease: "none",
+        onUpdate: () => { $("#typed").textContent = PROMPT.slice(0, Math.round(typing.n)); } }, 1.2);
+      tl.to("#s1", { opacity: 0, duration: 0.3 }, 4.35);
+
+      // ---- Scene 2: reveal ---- // beat-locked: 4.39s (GLOW)
+      tl.fromTo("#wm", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: E.out }, 4.39);
+      tl.fromTo("#sub", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.7, ease: E.out }, 5.0);
+      tl.fromTo("#line", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.7, ease: E.out }, 5.9);
+      tl.to("#s2", { opacity: 0, duration: 0.3 }, 8.7);
+
+      // ---- Scene 3: flow ----
+      tl.fromTo("#s3", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 8.74);
+      tl.fromTo(["#p1", "#p2", "#p3"], { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: E.out }, 8.9);
+      tl.fromTo(["#a1", "#a2"], { scaleX: 0 }, { scaleX: 1, duration: 0.4, stagger: 0.12 }, 9.1);
+      tl.fromTo("#shot", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.7, ease: E.out }, 8.95);
+      tl.fromTo("#scan", { x: 0 }, { x: 794, duration: 2.1, ease: "none" }, 9.2);
+      tl.fromTo("#tag", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 9.3);
+      // pipeline lights up in order
+      [["#p1", 9.0], ["#p2", 9.9], ["#p3", 11.4]].forEach(([id, t]) =>
+        tl.to(id, { color: "#f8f9fa", borderColor: "#68aeff", backgroundColor: "rgba(74,144,226,.35)", boxShadow: "0 0 40px rgba(74,144,226,.6)", duration: 0.35 }, t));
+      // four checks, one by one, each stays until the scene ends // beat-grid: 9.2, 9.9, 10.6, 11.3
+      $$("#checks .row").forEach((row, i) => {
+        const t = 9.2 + i * 0.7;
+        tl.fromTo(row, { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: E.out }, t);
+        tl.fromTo(row.firstElementChild, { scale: 0.4 }, { scale: 1, duration: 0.4, ease: "back.out(2.4)" }, t + 0.05);
+      });
+      tl.fromTo("#file", { opacity: 0, y: 30, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 12.0);
+      tl.to("#s3", { opacity: 0, duration: 0.3 }, 13.1);
+
+      // ---- Scene 4: 92 tools ---- // strong cue: 13.11s, chips on alternate beats
+      const cats = [["File & OS", 15], ["Browser", 8], ["Office", 12], ["AI-Powered", 13], ["Vision", 7], ["System", 14], ["Dev Tools", 13], ["Input", 10]];
+      const chipsBox = $("#chips");
+      cats.forEach(([label, n], i) => {
+        const el = document.createElement("div");
+        el.className = "chip abs";
+        el.style.left = 1010 + (i % 2) * 410 + "px";
+        el.style.top = 130 + Math.floor(i / 2) * 195 + "px";
+        el.innerHTML = "<span>" + label + "</span><em>" + n + "</em>";
+        el.id = "chip" + i;
+        chipsBox.appendChild(el);
+      });
+      tl.fromTo("#s4", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 13.11);
+      tl.fromTo(["#unit", "#cap"], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: E.out }, 13.2);
+      const rows = [13.11, 14.2, 15.29, 16.38]; // beat-grid, every other beat so labels stay readable
+      const count = { v: 0 };
+      let cum = 0;
+      rows.forEach((t, r) => {
+        const pair = [r * 2, r * 2 + 1];
+        pair.forEach((i) => {
+          tl.fromTo("#chip" + i, { opacity: 0, y: 36, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: E.out }, t + (i % 2) * 0.1);
+          cum += cats[i][1];
+        });
+        tl.to(count, { v: cum, duration: 0.6, ease: "power2.out",
+          onUpdate: () => { $("#count").textContent = Math.round(count.v); } }, t + 0.1);
+      });
+      tl.to("#s4", { opacity: 0, duration: 0.3 }, 17.15);
+
+      // ---- Scene 5: outro ---- // strong cue: 17.47s
+      tl.fromTo("#s5", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 17.47);
+      tl.fromTo("#vf span", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.5, ease: E.out }, 17.8);
+      tl.fromTo(".model", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.16, ease: E.out }, 19.0);
+      tl.fromTo("#url", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: E.out }, 19.9);
+      tl.fromTo("#fade", { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "power1.in" }, 20.38);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

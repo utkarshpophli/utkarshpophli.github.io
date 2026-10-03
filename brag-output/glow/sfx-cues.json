@@ -1,0 +1,387 @@
+[
+ {
+  "t": 0.85,
+  "file": "interface/drop_001.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 1.2,
+  "file": "keyboard/keypress-001.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.232,
+  "file": "keyboard/keypress-008.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.265,
+  "file": "keyboard/keypress-015.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.297,
+  "file": "keyboard/keypress-022.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.362,
+  "file": "keyboard/keypress-004.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.394,
+  "file": "keyboard/keypress-011.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.459,
+  "file": "keyboard/keypress-025.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.492,
+  "file": "keyboard/keypress-032.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.556,
+  "file": "keyboard/keypress-014.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.589,
+  "file": "keyboard/keypress-021.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.621,
+  "file": "keyboard/keypress-028.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.654,
+  "file": "keyboard/keypress-003.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.686,
+  "file": "keyboard/keypress-010.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.718,
+  "file": "keyboard/keypress-017.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.751,
+  "file": "keyboard/keypress-024.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.815,
+  "file": "keyboard/keypress-006.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.848,
+  "file": "keyboard/keypress-013.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.88,
+  "file": "keyboard/keypress-020.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.913,
+  "file": "keyboard/keypress-027.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.945,
+  "file": "keyboard/keypress-002.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 1.977,
+  "file": "keyboard/keypress-009.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.01,
+  "file": "keyboard/keypress-016.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.075,
+  "file": "keyboard/keypress-030.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.107,
+  "file": "keyboard/keypress-005.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.139,
+  "file": "keyboard/keypress-012.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.172,
+  "file": "keyboard/keypress-019.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.237,
+  "file": "keyboard/keypress-001.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.269,
+  "file": "keyboard/keypress-008.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.301,
+  "file": "keyboard/keypress-015.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.334,
+  "file": "keyboard/keypress-022.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.366,
+  "file": "keyboard/keypress-029.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.399,
+  "file": "keyboard/keypress-004.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.463,
+  "file": "keyboard/keypress-018.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.496,
+  "file": "keyboard/keypress-025.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.528,
+  "file": "keyboard/keypress-032.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.593,
+  "file": "keyboard/keypress-014.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.625,
+  "file": "keyboard/keypress-021.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.658,
+  "file": "keyboard/keypress-028.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.69,
+  "file": "keyboard/keypress-003.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.755,
+  "file": "keyboard/keypress-017.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.82,
+  "file": "keyboard/keypress-031.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.852,
+  "file": "keyboard/keypress-006.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.885,
+  "file": "keyboard/keypress-013.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.917,
+  "file": "keyboard/keypress-020.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.949,
+  "file": "keyboard/keypress-027.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 2.982,
+  "file": "keyboard/keypress-002.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.014,
+  "file": "keyboard/keypress-009.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.079,
+  "file": "keyboard/keypress-023.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.111,
+  "file": "keyboard/keypress-030.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.176,
+  "file": "keyboard/keypress-012.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.208,
+  "file": "keyboard/keypress-019.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.241,
+  "file": "keyboard/keypress-026.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.273,
+  "file": "keyboard/keypress-001.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.306,
+  "file": "keyboard/keypress-008.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.338,
+  "file": "keyboard/keypress-015.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.37,
+  "file": "keyboard/keypress-022.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.403,
+  "file": "keyboard/keypress-029.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.435,
+  "file": "keyboard/keypress-004.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 3.468,
+  "file": "keyboard/keypress-011.wav",
+  "vol": 0.32
+ },
+ {
+  "t": 4.3,
+  "file": "impact/impactBell_heavy_000.ogg",
+  "vol": 0.7
+ },
+ {
+  "t": 8.65,
+  "file": "impact/impactSoft_medium_001.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 9.2,
+  "file": "interface/select_008.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 9.9,
+  "file": "interface/select_008.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 10.6,
+  "file": "interface/select_008.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 11.3,
+  "file": "interface/select_008.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 12.0,
+  "file": "impact/impactBell_heavy_003.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 13.05,
+  "file": "impact/impactSoft_medium_004.ogg",
+  "vol": 0.55
+ },
+ {
+  "t": 13.11,
+  "file": "casino/chips-stack-1.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 13.64,
+  "file": "casino/chips-stack-2.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 14.2,
+  "file": "casino/chips-stack-3.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 14.73,
+  "file": "casino/chips-stack-4.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 15.29,
+  "file": "casino/chips-stack-5.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 15.84,
+  "file": "casino/chips-stack-6.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 16.38,
+  "file": "casino/chips-stack-1.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 16.93,
+  "file": "casino/chips-stack-2.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 17.4,
+  "file": "impact/impactBell_heavy_004.ogg",
+  "vol": 0.7
+ }
+]

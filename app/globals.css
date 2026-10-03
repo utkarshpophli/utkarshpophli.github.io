@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* z-index scale: canvas 0 < content 10 < nav 40 < overlay 50 < preloader 60 */
+:root {
+  --z-canvas: 0;
+  --z-content: 10;
+  --z-nav: 40;
+  --z-overlay: 50;
+  --z-preloader: 60;
+}
+
+/* Dark is the default. Light is cool grey, one accent for the whole page. */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0d0e10;
+  --bg-2: #15171b;
+  --fg: #ecebe8;
+  --muted: #9a9ea6;
+  --line: rgb(255 255 255 / 0.12);
+  --accent: #ff5a36;
+  --on-accent: #0d0e10;
+  --particle: #d9d8d4;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #eceef0;
+  --bg-2: #e0e3e7;
+  --fg: #101215;
+  --muted: #565c66;
+  --line: rgb(16 18 21 / 0.14);
+  --accent: #c8300f;
+  --on-accent: #ffffff;
+  --particle: #1a1c20;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-onaccent: var(--on-accent);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Entrance states only exist when JS runs and motion is allowed. */
+.js-anim [data-in] {
+  opacity: 0;
+}
+/* Opacity, not transform: GSAP would read a CSS transform as a pixel offset. */
+.js-anim [data-hero] [data-word] {
+  opacity: 0;
+}
+.js-anim [data-photo] {
+  clip-path: inset(100% 0 0 0);
+}
+html:not(.js-anim) .preloader {
+  display: none;
+}
+
+/* Skills console: one panel visible at a time on desktop. */
+.skills-panel {
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+@media (min-width: 768px) {
+  html:not([data-reduce]) .skills-panel {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateY(24px);
+    pointer-events: none;
+  }
+  html:not([data-reduce]) .skills-panel[data-active="true"] {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+/* Experience cards: each role has its own hue, with a glow that follows the pointer. */
+.role-card {
+  background:
+    radial-gradient(520px circle at var(--mx, 18%) var(--my, 0%), hsl(var(--hue) 80% 55% / 0.11), transparent 60%),
+    linear-gradient(160deg, hsl(var(--hue) 60% 50% / 0.08), transparent 42%),
+    var(--bg-2);
+  border: 1px solid hsl(var(--hue) 45% 50% / 0.3);
+}
+.role-tile {
+  background: color-mix(in oklab, var(--bg) 55%, transparent);
+  border: 1px solid var(--line);
+}
+.role-num {
+  color: hsl(var(--hue) 80% var(--tint-l));
+}
+.role-mark {
+  color: hsl(var(--hue) 80% var(--tint-l));
+  background: hsl(var(--hue) 70% 50% / 0.14);
+  border: 1px solid hsl(var(--hue) 50% 50% / 0.4);
+}
+
+/* Skill colours: one hue per category, shared with the canvas graph. */
+.skill-chip {
+  border-color: hsl(var(--hue) 55% var(--tint-l) / 0.55);
+  background: hsl(var(--hue) 65% 50% / 0.1);
+}
+.skill-used {
+  color: hsl(var(--hue) 75% var(--tint-l));
+  border-left: 1px solid hsl(var(--hue) 55% var(--tint-l) / 0.4);
+}
+.skill-rail-on {
+  color: hsl(var(--hue) 75% var(--tint-l));
+}
+:root,
+:root[data-theme="dark"] {
+  --tint-l: 66%;
+}
+:root[data-theme="light"] {
+  --tint-l: 34%;
+}
+
+html[data-reduce] .skills-rail {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

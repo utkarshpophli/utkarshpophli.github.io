@@ -1,0 +1,2 @@
+Introducing Machine Learning Algorithms From Scratch: 14 algorithms written with only Python and NumPy, plus a Streamlit app to watch each one run.
+Built with Python, NumPy, Plotly and Streamlit.
