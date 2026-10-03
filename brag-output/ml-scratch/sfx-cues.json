@@ -1,0 +1,112 @@
+[
+ {
+  "t": 0.3,
+  "file": "interface/drop_001.ogg",
+  "vol": 0.4
+ },
+ {
+  "t": 1.55,
+  "file": "impact/impactSoft_medium_001.ogg",
+  "vol": 0.6
+ },
+ {
+  "t": 3.62,
+  "file": "casino/card-slide-1.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 4.3,
+  "file": "ui/click2.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 8.9,
+  "file": "ui/click2.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 9.88,
+  "file": "interface/select_008.ogg",
+  "vol": 0.55
+ },
+ {
+  "t": 10.55,
+  "file": "interface/click_003.ogg",
+  "vol": 0.3
+ },
+ {
+  "t": 10.9,
+  "file": "interface/click_003.ogg",
+  "vol": 0.3
+ },
+ {
+  "t": 11.25,
+  "file": "interface/click_003.ogg",
+  "vol": 0.3
+ },
+ {
+  "t": 11.6,
+  "file": "interface/click_003.ogg",
+  "vol": 0.3
+ },
+ {
+  "t": 11.95,
+  "file": "interface/click_003.ogg",
+  "vol": 0.3
+ },
+ {
+  "t": 12.3,
+  "file": "interface/click_003.ogg",
+  "vol": 0.3
+ },
+ {
+  "t": 12.55,
+  "file": "impact/impactSoft_medium_004.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 13.18,
+  "file": "ui/rollover2.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 14.22,
+  "file": "ui/rollover2.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 15.28,
+  "file": "ui/rollover2.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 16.34,
+  "file": "ui/rollover2.ogg",
+  "vol": 0.5
+ },
+ {
+  "t": 17.85,
+  "file": "impact/impactBell_heavy_003.ogg",
+  "vol": 0.55
+ },
+ {
+  "t": 18.44,
+  "file": "casino/card-slide-2.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 19.49,
+  "file": "casino/card-slide-2.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 20.54,
+  "file": "casino/card-slide-2.ogg",
+  "vol": 0.45
+ },
+ {
+  "t": 21.6,
+  "file": "interface/bong_001.ogg",
+  "vol": 0.5
+ }
+]

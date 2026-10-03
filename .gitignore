@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+ruvector.db
+# Music tracks copied into the brag compositions: licence terms not verified for redistribution
+brag-output/**/composition/assets/music/
+brag-output/**/composition/node_modules
